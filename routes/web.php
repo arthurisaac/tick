@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceInfoController;
+use App\Http\Controllers\TicketInfoController;
+use App\Http\Controllers\TicketTimeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +39,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get('auth/google', [GoogleAuthController::class,'redirect'])->name('google.auth');
+Route::get('auth/google/call-back', [GoogleAuthController::class,'callbackGoogle'])->name('google.callback');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/agencies', [AgencyController::class, 'index'])->name('agences.choix');
+    Route::get('/services', [ServiceController::class, 'index'])->name('services.choix');
+    Route::get('/service-information', [ServiceInfoController::class, 'index'])->name('services.info');
+    Route::get('/ticket-information', [TicketInfoController::class, 'index'])->name('ticket.info');
+    Route::get('/ticket-in-time', [TicketTimeController::class, 'index'])->name('ticket.in-time');
+    Route::get('/ticket-in-time-success', [TicketTimeController::class, 'index'])->name('ticket.in-time-success');
+    //
+    Route::post('/ticket-information', [TicketInfoController::class, 'store'])->name('ticket.new');
+    Route::post('/ticket-in-time', [TicketTimeController::class, 'success'])->name('ticket.save-in-time');
 });
 
 require __DIR__.'/auth.php';

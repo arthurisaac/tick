@@ -1,19 +1,40 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 export default function Dashboard({ auth }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>}
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
+            <div className="grid grid-cols-3 grid-rows-5 gap-4 p-5">
+                <div className="p-5">
+                    <Link href={route('agences.choix')} className="relative max-w-xl mx-auto mt-20">
+                        <img className="h-64 w-full object-cover rounded-md" src="https://images.unsplash.com/photo-1680725779155-456faadefa26" alt="Random image" />
+                        <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="text-white text-3xl font-bold">Prendre un e-ticket</h2>
+                        </div>
+                    </Link>
+                </div>
+                <div  className="p-5">
+                    <Link className="relative max-w-xl mx-auto mt-20">
+                            <img className="h-64 w-full object-cover rounded-md" src="https://images.unsplash.com/photo-1680725779155-456faadefa26" alt="Random image" />
+                            <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md"></div>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <h2 className="text-white text-3xl font-bold">Suivre l'évolution de la file</h2>
+                            </div>
+                        </Link>
                     </div>
+                <div  className="p-5">
+                    <Link className="relative max-w-xl mx-auto mt-20">
+                        <img className="h-64 w-full object-cover rounded-md" src="https://images.unsplash.com/photo-1680725779155-456faadefa26" alt="Random image" />
+                        <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <h2 className="text-white text-3xl font-bold">Gérer son profil</h2>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </AuthenticatedLayout>

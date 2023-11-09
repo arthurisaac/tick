@@ -91,6 +91,16 @@ export default function Login({ status, canResetPassword }) {
                         Log in
                     </PrimaryButton>
                 </div>
+
+                <div class="inline-flex items-center justify-center w-full">
+                    <hr class="w-64 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+                    <span class="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">Ou</span>
+                </div>
+                <div className="flex items-center justify-center mt-4">
+                    <a href={route('google.auth')} className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+                        Continuer avec Google
+                    </a>
+                </div>
             </form>
         </GuestLayout>
     );
