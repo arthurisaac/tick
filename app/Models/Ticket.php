@@ -20,4 +20,8 @@ class Ticket extends Model
         'passage',
         'code',
     ];
+
+    public function Agence() {
+        return $this->belongsTo(Agence::class,'agence');
+    }
 }

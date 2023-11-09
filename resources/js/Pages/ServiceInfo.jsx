@@ -6,7 +6,7 @@ import axios from 'axios';
 import ticket from '../images/ticket.png';
 
 
-export default function ServiceInfo({ auth, url, service_id }) {
+export default function ServiceInfo({ auth, agence, service_id }) {
     const [service, setService] = useState([]);
     const [numero, setNumero] = useState(0);
     const [average, setAverage] = useState("");
@@ -15,7 +15,7 @@ export default function ServiceInfo({ auth, url, service_id }) {
 
     useEffect(() => {
 
-    axios.get(url + '/api/services/' + service_id)
+    axios.get(agence.url + '/api/services/' + service_id)
         .then(res => {  
             setService(res.data.service);
             setNumero(res.data.numero);
@@ -32,7 +32,7 @@ export default function ServiceInfo({ auth, url, service_id }) {
         }).catch(e => {
             alert("Une erreur s'est produit " + JSON.stringify(e))
         }) */
-        router.post(route('ticket.new'), {service_id, url})
+        router.post(route('ticket.new'), {service_id, agence})
     }
 
     return (

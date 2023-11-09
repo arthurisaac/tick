@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agence;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ServiceInfoController extends Controller
 {
      public function index(Request $request) {
-        $url = "http://localhost:8000";
         $service_id = $request->get("service");
+        $agence = Agence::query()->find($request->get("agence"));
 
         return Inertia::render('ServiceInfo', [
-            'url'=> $url,
+            'agence'=> $agence,
             'service_id'=> $service_id
         ]);
     }

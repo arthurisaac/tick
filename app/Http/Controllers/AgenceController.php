@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agence;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AgenceController extends Controller
 {
@@ -12,7 +13,11 @@ class AgenceController extends Controller
      */
     public function index()
     {
-        //
+        $agences = Agence::all();
+        return Inertia::render('Agences', [
+            'status' => session('status'),
+            'agences'=> $agences
+        ]);
     }
 
     /**
